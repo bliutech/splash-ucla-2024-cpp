@@ -9,9 +9,13 @@
  */
 
 #include <iostream>
+
+#include "graphics.hpp"
+
 using namespace std;
 
 int main() {
   cout << "Hello world!" << endl;
+  printScreen();
   return 0;
 }

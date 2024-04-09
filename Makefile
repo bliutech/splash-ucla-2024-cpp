@@ -3,12 +3,12 @@ CFLAGS=-Wall -O0
 
 TARGET=pixel-panic
 
-DEPS=$(TARGET).cpp
+DEPS=$(TARGET).cpp graphics.cpp
 
 default: $(TARGET)
 
 $(TARGET): $(DEPS)
-	$(CPP) $(CFLAGS) -o $@ $@.cpp
+	$(CPP) $(CFLAGS) -o $@ *.cpp
 
 .PHONY: default format valgrind clean
 
