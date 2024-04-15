@@ -1,9 +1,9 @@
 CPP=g++
-CFLAGS=-Wall -O0
+CFLAGS=-g -Wall -O0
 
 TARGET=pixel-panic
 
-DEPS=$(TARGET).cpp graphics.cpp
+DEPS=$(wildcard *.cpp) $(wildcard *.hpp)
 
 default: $(TARGET)
 
