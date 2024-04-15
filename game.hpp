@@ -13,6 +13,9 @@ struct Bullet {
 
 class Game {
  public:
+  // game board in row-major order [# rows, # columns]
+  string board[BOARD_HEIGHT][BOARD_WIDTH];
+
   Game();
   Game(const Game &g);
   ~Game();
@@ -21,7 +24,6 @@ class Game {
   int height() { return BOARD_HEIGHT; }
 
  private:
-  string board[BOARD_HEIGHT][BOARD_WIDTH];
 };
 
 #endif

@@ -1,3 +1,5 @@
+#include "graphics.hpp"
+
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
@@ -13,7 +15,7 @@ using namespace std;
  *
  * TODO: Pass in a Game object as a parameter and print out the board.
  */
-void printScreen() {
+void printScreen(Game& g) {
   string edge = "";
   for (int i = 0; i < BOARD_WIDTH + 2; ++i) {
     edge += "=";
@@ -22,7 +24,7 @@ void printScreen() {
   for (int i = 0; i < BOARD_HEIGHT; ++i) {
     string line = "";
     for (int j = 0; j < BOARD_WIDTH; ++j) {
-      line += ".";
+      line += g.board[i][j];
     }
     cout << "|" << line << "|" << endl;
   }

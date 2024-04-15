@@ -2,16 +2,16 @@
 using namespace std;
 
 Game::Game() {
-  for (int i = 0; i < width(); ++i) {
-    for (int j = 0; j < height(); ++j) {
-      board[i][j] = ".";
+  for (int i = 0; i < BOARD_HEIGHT; ++i) {
+    for (int j = 0; j < BOARD_WIDTH; ++j) {
+      board[i][j] = GRAPHICS_NEUTRAL;
     }
   }
 };
 
 Game::Game(const Game &g) {
-  for (int i = 0; i < width(); ++i) {
-    for (int j = 0; j < height(); ++j) {
+  for (int i = 0; i < BOARD_HEIGHT; ++i) {
+    for (int j = 0; j < BOARD_WIDTH; ++j) {
       board[i][j] = g.board[i][j];
     }
   }
