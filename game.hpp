@@ -3,9 +3,13 @@
 
 #include <iostream>
 
-#include "constants.h"
+#include "constants.hpp"
 
 using namespace std;
+
+struct Bullet {
+  int pos_x, pos_y;
+};
 
 class Game {
  public:
