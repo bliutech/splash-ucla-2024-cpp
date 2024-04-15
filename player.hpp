@@ -1,16 +1,13 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "constants.h"
+#include "constants.hpp"
 
 class Player {
  public:
   Player();
   Player(const Player &p);
   ~Player();
-
-  int width() { return PLAYER_WIDTH; }
-  int height() { return PLAYER_HEIGHT; }
 
   int get_pos_x() { return pos_x; }
   int get_pos_y() { return pos_y; }
