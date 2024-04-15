@@ -16,17 +16,18 @@ using namespace std;
  * TODO: Pass in a Game object as a parameter and print out the board.
  */
 void printScreen(Game& g) {
-  string edge = "";
+  string edge = "\e[0;32m";
   for (int i = 0; i < BOARD_WIDTH + 2; ++i) {
     edge += "=";
   }
+  edge += "\e[0m";
   cout << edge << endl;
   for (int i = 0; i < BOARD_HEIGHT; ++i) {
     string line = "";
     for (int j = 0; j < BOARD_WIDTH; ++j) {
       line += g.board[i][j];
     }
-    cout << "|" << line << "|" << endl;
+    cout << "\e[0;32m|\e[0m" << line << "\e[0;32m|\e[0m" << endl;
   }
   cout << edge << endl;
 }

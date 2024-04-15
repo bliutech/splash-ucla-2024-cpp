@@ -27,7 +27,8 @@ int main() {
   int count = 0;
   int i = 0;
   Game g = Game();
-  int px = 0, py = 0;
+  int px = 0;
+  int py = 0;
   g.board[px][py] = GRAPHICS_PLAYER;
   clearScreen();
   printScreen(g);
@@ -51,15 +52,30 @@ int main() {
     FD_ZERO(&set);
     FD_SET(fileno(stdin), &set);
 
+    // event loop
+    // for all bullets, bullet.move() <- bullets only move in a straight line up
+    // for all aliens, alien.fall() <- aliens only move down in a straight line
+    // check if the location of any bullet is in the location of any alien.
+    // Destroy an alien if it does. player keyboard logic check if the location
+    // of any alien is > some y value (if they hit the base, then the player
+    // loses a life) or if they specifically hit the player, then they lose a
+    // life
+
+    // Implementation Notes:
+    // probably just need to add a couple of vectors of aliens and bullets to
+    // iterate over in each event loop there is a bug where the player's sprite
+    // get's temporarily overrided by the blank that is added there by the
+    // alien's graphics loop.
+
     count += 1;
     clearScreen();
     printScreen(g);
     cout << "Count: " << count << endl;
 
     // Dummy alien.
-    g.board[i / BOARD_WIDTH][i % BOARD_HEIGHT] = GRAPHICS_NEUTRAL;
-    i = count % (BOARD_WIDTH * BOARD_HEIGHT);
-    g.board[i / BOARD_WIDTH][i % BOARD_HEIGHT] = GRAPHICS_ALIEN;
+    g.board[i / BOARD_WIDTH][i % BOARD_WIDTH] = GRAPHICS_NEUTRAL;
+    i = count % (BOARD_WIDTH * BOARD_WIDTH);
+    g.board[i / BOARD_WIDTH][i % BOARD_WIDTH] = GRAPHICS_ALIEN;
 
     int res = select(fileno(stdin) + 1, &set, NULL, NULL, &tv);
     if (res < 0) {
