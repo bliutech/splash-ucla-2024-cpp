@@ -1,5 +1,7 @@
-#define PLAYER_WIDTH 5
-#define PLAYER_HEIGHT 5
+#ifndef PLAYER_H
+#define PLAYER_H
+
+#include "constants.h"
 
 class Player {
  public:
@@ -29,3 +31,5 @@ class Player {
   int num_bullets;
   int health;
 };
+
+#endif

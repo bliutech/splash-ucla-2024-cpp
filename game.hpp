@@ -1,8 +1,11 @@
-#include <iostream>
-using namespace std;
+#ifndef GAME_H
+#define GAME_H
 
-#define BOARD_WIDTH 64
-#define BOARD_HEIGTH 40
+#include <iostream>
+
+#include "constants.h"
+
+using namespace std;
 
 class Game {
  public:
@@ -11,8 +14,10 @@ class Game {
   ~Game();
 
   int width() { return BOARD_WIDTH; }
-  int height() { return BOARD_HEIGTH; }
+  int height() { return BOARD_HEIGHT; }
 
  private:
-  string board[BOARD_HEIGTH][BOARD_WIDTH];
+  string board[BOARD_HEIGHT][BOARD_WIDTH];
 };
+
+#endif

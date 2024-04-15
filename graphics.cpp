@@ -1,10 +1,10 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
-using namespace std;
 
-#define BOARD_WIDTH 64
-#define BOARD_HEIGHT 40
+#include "constants.h"
+
+using namespace std;
 
 /*
  * printScreen implementation
