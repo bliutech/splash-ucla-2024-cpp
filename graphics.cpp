@@ -29,7 +29,17 @@ void printScreen(Game& g) {
     }
     cout << "\e[0;32m|\e[0m" << line << "\e[0;32m|\e[0m" << endl;
   }
+  string base_line = "\e[0;32m|";
+  for (int i = 0; i < BOARD_WIDTH; ++i) {
+    base_line += "-";
+  }
+  base_line += "|\e[0m";
+  cout << base_line << endl;
+  cout << "\e[0;32m|                              BASE                         "
+          "     |\e[0m"
+       << endl;
   cout << edge << endl;
+  cout << "Score: " << g.get_score() << endl;
 }
 
 /*

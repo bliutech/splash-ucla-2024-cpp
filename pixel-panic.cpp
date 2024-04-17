@@ -27,9 +27,9 @@ int main() {
   int count = 0;
   int i = 0;
   Game g = Game();
-  int px = 0;
-  int py = 0;
-  g.board[px][py] = GRAPHICS_PLAYER;
+  int px = BOARD_WIDTH / 2;
+  int py = BOARD_HEIGHT - 1;
+  g.board[py][px] = GRAPHICS_PLAYER;
   clearScreen();
   printScreen(g);
   cout << "Count: " << count << endl;
