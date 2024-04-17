@@ -1,6 +1,6 @@
 #include "alien.hpp"
 
-Alien::Alien() {}
+Alien::Alien() { actor_type = 2; }
 
 Alien::Alien(const Alien &a) {}
 

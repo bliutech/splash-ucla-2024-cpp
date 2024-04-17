@@ -17,9 +17,12 @@
 #include <unistd.h>
 
 #include <iostream>
+#include <list>
 
 #include "game.hpp"
 #include "graphics.hpp"
+#include "actor.hpp"
+#include "player.hpp"
 
 using namespace std;
 
@@ -27,9 +30,15 @@ int main() {
   int count = 0;
   int i = 0;
   Game g = Game();
+  list<Actor*> actors;
+
   int px = BOARD_WIDTH / 2;
   int py = BOARD_HEIGHT - 1;
-  g.board[py][px] = GRAPHICS_PLAYER;
+
+  Player plr = Player(px, py);
+  actors.push_back(&plr);
+
+  // g.board[py][px] = GRAPHICS_PLAYER;
   clearScreen();
   printScreen(g);
   cout << "Count: " << count << endl;
@@ -73,10 +82,12 @@ int main() {
     cout << "Count: " << count << endl;
 
     // Dummy alien.
+    /*
     g.board[i / BOARD_WIDTH][i % BOARD_WIDTH] = GRAPHICS_NEUTRAL;
     i = count % (BOARD_WIDTH * BOARD_WIDTH);
     g.board[i / BOARD_WIDTH][i % BOARD_WIDTH] = GRAPHICS_ALIEN;
-
+    */
+    
     int res = select(fileno(stdin) + 1, &set, NULL, NULL, &tv);
     if (res < 0) {
       perror("Error handling keypress.");
@@ -97,6 +108,34 @@ int main() {
     // TODO: Make sure alien movement is different than player movement.
     // Currently, each cycle through the loop is essentially determined by
     // whether or not a player made a keypress.
+
+    Inputs inputs;
+    inputs.input = c;
+    inputs.hasInput = true;
+
+    list<Actor*>::iterator iter = actors.begin();
+
+    for (; iter != actors.end(); iter++) {
+      actors[iter]->tick(inputs);  // Compute...
+
+      // Then draw
+      int x, y = actors[iter]->get_pos_x(), actors[iter]->get_pos_y();
+
+      switch (actors[iter]->get_actor_type()) {
+        case 1:  // Player
+          g.board[x][y] = GRAPHICS_PLAYER;
+          break;
+        case 2:  // Alien 
+          g.board[x][y] = GRAPHICS_ALIEN;
+          break;
+        default:
+        g.board[x][y] = GRAPHICS_NEUTRAL;
+          break;
+      } 
+    }
+
+
+    /*
     switch (c) {
       case 'A':  // Up key
       case 'w':
@@ -141,6 +180,7 @@ int main() {
       default:
         break;
     }
+    */
 
     usleep(100000);
   }

@@ -2,21 +2,24 @@
 #define PLAYER_H
 
 #include "constants.hpp"
+#include "actor.hpp"
 
-class Player {
+class Player : Actor {
  public:
   Player();
   Player(const Player &p);
   ~Player();
 
-  int get_pos_x() { return pos_x; }
-  int get_pos_y() { return pos_y; }
+  // int get_pos_x() { return pos_x; }
+  // int get_pos_y() { return pos_y; }
 
   int get_num_bullets() { return num_bullets; }
   int get_health() { return health; }
 
-  void move_left() { pos_x -= 1; }
-  void move_right() { pos_y -= 1; }
+  void tick(Inputs inputs);
+
+  // void move_left() { pos_x -= 1; }
+  // void move_right() { pos_y -= 1; }
 
   void shoot() { num_bullets -= 1; }
   void take_damage(int damage) {
@@ -24,7 +27,7 @@ class Player {
   }
 
  private:
-  int pos_x, pos_y;
+  // int pos_x, pos_y;
   int num_bullets;
   int health;
 };
