@@ -116,12 +116,12 @@ int main() {
     list<Actor*>::iterator iter = actors.begin();
 
     for (; iter != actors.end(); iter++) {
-      actors[iter]->tick(inputs);  // Compute...
+      iter->tick(inputs);  // Compute...
 
       // Then draw
-      int x, y = actors[iter]->get_pos_x(), actors[iter]->get_pos_y();
+      int x, y = iter->get_pos_x(), iter->get_pos_y();
 
-      switch (actors[iter]->get_actor_type()) {
+      switch (iter->get_actor_type()) {
         case 1:  // Player
           g.board[x][y] = GRAPHICS_PLAYER;
           break;
