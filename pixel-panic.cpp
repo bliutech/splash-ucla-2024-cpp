@@ -124,13 +124,13 @@ int main() {
 
       switch ((*iter)->get_actor_type()) {
         case 1:  // Player
-          g.board[x][y] = GRAPHICS_PLAYER;
+          g.board[y][x] = GRAPHICS_PLAYER;
           break;
         case 2:  // Alien 
-          g.board[x][y] = GRAPHICS_ALIEN;
+          g.board[y][x] = GRAPHICS_ALIEN;
           break;
         default:
-          g.board[x][y] = GRAPHICS_NEUTRAL;
+          g.board[y][x] = GRAPHICS_NEUTRAL;
           break;
       } 
 
