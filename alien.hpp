@@ -3,11 +3,11 @@
 
 #include "actor.hpp"
 
-class Alien : Actor {
+class Alien : public Actor {
  public:
   Alien();
   Alien(const Alien &a);
-  ~Alien();
+  Alien(int x, int y);
 
   void tick(Inputs inputs);
   /*

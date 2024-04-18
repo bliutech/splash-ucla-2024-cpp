@@ -1,11 +1,12 @@
 #include "player.hpp"
 using namespace std;
 
-Player::Player() { actor_type = 1; }
+Player::Player() : Actor::Actor() { actor_type = 1; }
 
-Player::Player(const Player &p) {}
+Player::Player(const Player &p) : Actor::Actor(p) {}
 
-Player::~Player() {}
+Player::Player(int x, int y) : Actor::Actor(x, y) {}
+
 
 void Player::tick(Inputs inputs) {
     switch (inputs.input) {

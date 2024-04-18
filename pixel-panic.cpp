@@ -115,11 +115,12 @@ int main() {
 
     list<Actor*>::iterator iter = actors.begin();
 
-    for (; iter != actors.end(); iter++) {
+    for (; iter != actors.end(); ++iter) {
       (*iter)->tick(inputs);  // Compute...
 
       // Then draw
-      int x, y = (*iter)->get_pos_x(), (*iter)->get_pos_y();
+      int x = (*iter)->get_pos_x();
+      int y = (*iter)->get_pos_y();
 
       switch ((*iter)->get_actor_type()) {
         case 1:  // Player
@@ -129,9 +130,11 @@ int main() {
           g.board[x][y] = GRAPHICS_ALIEN;
           break;
         default:
-        g.board[x][y] = GRAPHICS_NEUTRAL;
+          g.board[x][y] = GRAPHICS_NEUTRAL;
           break;
       } 
+
+      cout << x << ", " << y << endl;
     }
 
 

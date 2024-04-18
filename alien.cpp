@@ -1,7 +1,10 @@
 #include "alien.hpp"
 
-Alien::Alien() { actor_type = 2; }
+Alien::Alien() : Actor::Actor() { actor_type = 2; }
 
-Alien::Alien(const Alien &a) {}
+Alien::Alien(const Alien &a) : Actor::Actor(a) {}
 
-Alien::~Alien() {}
+Alien::Alien(int x, int y) : Actor::Actor(x, y) {}
+
+
+void Alien::tick(Inputs input) {}

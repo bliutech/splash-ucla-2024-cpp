@@ -4,11 +4,11 @@
 #include "constants.hpp"
 #include "actor.hpp"
 
-class Player : Actor {
+class Player : public Actor {
  public:
   Player();
   Player(const Player &p);
-  ~Player();
+  Player(int x, int y);
 
   // int get_pos_x() { return pos_x; }
   // int get_pos_y() { return pos_y; }
