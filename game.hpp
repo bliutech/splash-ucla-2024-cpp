@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#include "actor.hpp"
 #include "constants.hpp"
 
 using namespace std;
@@ -14,10 +15,10 @@ struct Bullet {
 class Game {
  public:
   // game board in row-major order [# rows, # columns]
-  string board[BOARD_HEIGHT][BOARD_WIDTH];
+  Actor* board[BOARD_HEIGHT][BOARD_WIDTH];
 
   Game();
-  Game(const Game &g);
+  Game(const Game& g);
   ~Game();
 
   int width() { return BOARD_WIDTH; }

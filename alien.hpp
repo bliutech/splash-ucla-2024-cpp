@@ -1,13 +1,16 @@
 #ifndef ALIEN_H
 #define ALIEN_H
 
+#include <string>
+
 #include "actor.hpp"
+#include "alienspawner.hpp"
+
+using namespace std;
 
 class Alien : public Actor {
  public:
-  Alien();
-  Alien(const Alien &a);
-  Alien(int x, int y);
+  Alien(int x, int y, AlienSpawner& spawner);
 
   void tick(Inputs inputs);
   /*
@@ -22,8 +25,12 @@ class Alien : public Actor {
   void move_down() { pos_y += 1; }
   */
 
+  string get_actor_symbol() const override;
+
  private:
   // int pos_x, pos_y;
+  AlienSpawner& spawnerRef;
+  unsigned int counter = 0;
 };
 
 #endif

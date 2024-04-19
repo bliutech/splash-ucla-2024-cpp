@@ -4,7 +4,7 @@ using namespace std;
 Game::Game() {
   for (int i = 0; i < BOARD_HEIGHT; ++i) {
     for (int j = 0; j < BOARD_WIDTH; ++j) {
-      board[i][j] = GRAPHICS_NEUTRAL;
+      board[i][j] = nullptr;
     }
   }
 };
