@@ -17,21 +17,34 @@
 #include <unistd.h>
 
 #include <iostream>
+#include <iterator>
+#include <list>
 
+#include "actor.hpp"
+#include "alienspawner.hpp"
 #include "game.hpp"
 #include "graphics.hpp"
+#include "player.hpp"
 
 using namespace std;
 
 int main() {
   int count = 0;
-  int i = 0;
+  // int i = 0;
   Game g = Game();
+  list<Actor*> actors;
+
   int px = BOARD_WIDTH / 2;
   int py = BOARD_HEIGHT - 1;
-  g.board[py][px] = GRAPHICS_PLAYER;
+
+  // Player plr = Player(px, py);
+  actors.push_back(new Player(px, py, actors));
+  actors.push_back(new AlienSpawner(actors));
+
+  // g.board[py][px] = GRAPHICS_PLAYER;
   clearScreen();
   printScreen(g);
+
   cout << "Count: " << count << endl;
 
   // Setup keyboard handling
@@ -73,76 +86,64 @@ int main() {
     cout << "Count: " << count << endl;
 
     // Dummy alien.
+    /*
     g.board[i / BOARD_WIDTH][i % BOARD_WIDTH] = GRAPHICS_NEUTRAL;
     i = count % (BOARD_WIDTH * BOARD_WIDTH);
     g.board[i / BOARD_WIDTH][i % BOARD_WIDTH] = GRAPHICS_ALIEN;
+    */
+
+    Inputs inputs;
+    inputs.hasInput = false;
 
     int res = select(fileno(stdin) + 1, &set, NULL, NULL, &tv);
     if (res < 0) {
       perror("Error handling keypress.");
       break;
-    } else if (res == 0) {
-      cout << "Timeout" << endl;
-      // Currently, this sleep is not necessary but maybe need to handle this
-      // later on. usleep(5000000);
-      continue;
+
+    } else {
+      char c;
+      while (res > 0) {
+        read(fileno(stdin), &c, 1);
+        inputs.input = c;
+        inputs.hasInput = true;
+
+        res = select(fileno(stdin) + 1, &set, NULL, NULL, &tv);
+      }
+      // TODO: Add switch statement to handle certain key presses as movement.
+      // TODO: Make sure alien movement is different than player movement.
+      // Currently, each cycle through the loop is essentially determined by
+      // whether or not a player made a keypress.
     }
 
-    char c;
-    cout << "Input available." << endl;
-    read(fileno(stdin), &c, 1);
-    cout << c << endl;
+    for (auto iter = actors.begin(); iter != actors.end();) {
+      (*iter)->tick(inputs);  // Compute...
 
-    // TODO: Add switch statement to handle certain key presses as movement.
-    // TODO: Make sure alien movement is different than player movement.
-    // Currently, each cycle through the loop is essentially determined by
-    // whether or not a player made a keypress.
-    switch (c) {
-      case 'A':  // Up key
-      case 'w':
-        if (py <= 0) {
-          py = 0;
-          break;
+      if ((*iter)->toDestroy) {
+        delete (*iter);
+        iter = actors.erase(iter);
+        continue;
+      }
+
+      // Then draw
+      int x = (*iter)->get_pos_x();
+      int y = (*iter)->get_pos_y();
+
+      if (!(*iter)->is_out_of_bounds()) {
+        if (g.board[y][x]) {
+          g.board[y][x]->collision(*iter);
+          (*iter)->collision(g.board[y][x]);
+          g.board[y][x] = nullptr;
+        } else {
+          g.board[y][x] = *iter;
         }
-        g.board[py][px] = GRAPHICS_NEUTRAL;
-        g.board[py - 1][px] = GRAPHICS_PLAYER;
-        py--;
-        break;
-      case 'D':  // Left key
-      case 'a':
-        if (px <= 0) {
-          px = 0;
-          break;
-        }
-        g.board[py][px] = GRAPHICS_NEUTRAL;
-        g.board[py][px - 1] = GRAPHICS_PLAYER;
-        px--;
-        break;
-      case 'C':  // Right key
-      case 'd':
-        if (px >= BOARD_WIDTH - 1) {
-          px = BOARD_WIDTH - 1;
-          break;
-        }
-        g.board[py][px] = GRAPHICS_NEUTRAL;
-        g.board[py][px + 1] = GRAPHICS_PLAYER;
-        px++;
-        break;
-      case 'B':
-      case 's':  // Down key
-        if (py >= BOARD_HEIGHT - 1) {
-          py = BOARD_HEIGHT - 1;
-          break;
-        }
-        g.board[py][px] = GRAPHICS_NEUTRAL;
-        g.board[py + 1][px] = GRAPHICS_PLAYER;
-        py++;
-        break;
-      default:
-        break;
+      }
+
+      // cout << x << ", " << y << endl;
+
+      ++iter;
     }
 
-    usleep(100000);
+    usleep(10000);
   }
 
   tcsetattr(fileno(stdin), TCSANOW, &oldSettings);

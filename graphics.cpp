@@ -25,7 +25,12 @@ void printScreen(Game& g) {
   for (int i = 0; i < BOARD_HEIGHT; ++i) {
     string line = "";
     for (int j = 0; j < BOARD_WIDTH; ++j) {
-      line += g.board[i][j];
+      if (g.board[i][j]) {
+        line += g.board[i][j]->get_actor_symbol();
+        g.board[i][j] = nullptr;
+      } else {
+        line += GRAPHICS_NEUTRAL;
+      }
     }
     cout << "\e[0;32m|\e[0m" << line << "\e[0;32m|\e[0m" << endl;
   }
