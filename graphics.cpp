@@ -43,7 +43,7 @@ void printScreen(Game& g) {
 
 /*
  * Clears the terminal screen.
- * 
+ *
  * Credit given to David Smallberg (UCLA) for this code.
  */
 void clearScreen() {
