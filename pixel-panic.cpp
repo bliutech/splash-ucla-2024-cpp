@@ -30,22 +30,17 @@ using namespace std;
 
 int main() {
   int count = 0;
-  // int i = 0;
   Game g = Game();
   list<Actor*> actors;
 
   int px = BOARD_WIDTH / 2;
   int py = BOARD_HEIGHT - 1;
 
-  // Player plr = Player(px, py);
   actors.push_back(new Player(px, py, actors));
   actors.push_back(new AlienSpawner(actors));
 
-  // g.board[py][px] = GRAPHICS_PLAYER;
   clearScreen();
   printScreen(g);
-
-  // cout << "Count: " << count << endl;
 
   // Setup keyboard handling
   // https://stackoverflow.com/questions/18281412/check-keypress-in-c-on-linux
