@@ -26,6 +26,7 @@ class Alien : public Actor {
   */
 
   string get_actor_symbol() const override;
+  void collision(Actor* other) override;
 
  private:
   // int pos_x, pos_y;

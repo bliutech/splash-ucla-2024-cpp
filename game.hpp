@@ -23,10 +23,21 @@ class Game {
 
   int width() { return BOARD_WIDTH; }
   int height() { return BOARD_HEIGHT; }
-  int get_score() { return score; }
+  static int get_score() { return score; }
+  static int get_lives() { return lives; }
+
+  static void scoring() { score++; }
+  static void dying() {
+    if (lives <= 0) {
+      lives = 0;
+      return;
+    }
+    lives--;
+  }
 
  private:
-  int score = 0;
+  static int score;
+  static int lives;
 };
 
 #endif

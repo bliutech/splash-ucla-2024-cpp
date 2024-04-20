@@ -8,6 +8,17 @@
 
 using namespace std;
 
+int scoreSize(int n) {
+  if (n == 0) return 1;
+
+  int length = 0;
+  while (n > 0) {
+    length++;
+    n /= 10;
+  }
+  return length;
+}
+
 // Prints the game board;
 void printScreen(Game& g) {
   string edge = "\e[0;32m";
@@ -15,7 +26,16 @@ void printScreen(Game& g) {
     edge += "=";
   }
   edge += "\e[0m";
+  string base_line = "\e[0;32m|";
+  for (int i = 0; i < BOARD_WIDTH; ++i) {
+    base_line += "-";
+  }
+  base_line += "|\e[0m";
   cout << edge << endl;
+  cout << "\e[0;32m|                          \e[0mPixel Panic\e[0;32m         "
+          "                  |\e[0m"
+       << endl;
+  cout << base_line << endl;
   for (int i = 0; i < BOARD_HEIGHT; ++i) {
     string line = "";
     for (int j = 0; j < BOARD_WIDTH; ++j) {
@@ -28,17 +48,26 @@ void printScreen(Game& g) {
     }
     cout << "\e[0;32m|\e[0m" << line << "\e[0;32m|\e[0m" << endl;
   }
-  string base_line = "\e[0;32m|";
-  for (int i = 0; i < BOARD_WIDTH; ++i) {
-    base_line += "-";
-  }
-  base_line += "|\e[0m";
   cout << base_line << endl;
   cout << "\e[0;32m|                              BASE                         "
           "     |\e[0m"
        << endl;
+  cout << base_line << endl;
+
+  string score_padding = "";
+  for (int i = 0; i < 9 - scoreSize(g.get_score()); ++i) {
+    score_padding += " ";
+  }
+  string lives_padding = "";
+  for (int i = 0; i < 9 - scoreSize(g.get_lives()); ++i) {
+    lives_padding += " ";
+  }
+  cout << "\e[0;32m|\e[0m"
+       << "                 "
+       << "Score: " << g.get_score() << score_padding << "       "
+       << "Lives: " << g.get_lives() << lives_padding << "        "
+       << "\e[0;32m|\e[0m" << endl;
   cout << edge << endl;
-  cout << "Score: " << g.get_score() << endl;
 }
 
 /*

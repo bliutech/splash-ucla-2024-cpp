@@ -45,7 +45,7 @@ int main() {
   clearScreen();
   printScreen(g);
 
-  cout << "Count: " << count << endl;
+  // cout << "Count: " << count << endl;
 
   // Setup keyboard handling
   // https://stackoverflow.com/questions/18281412/check-keypress-in-c-on-linux
@@ -83,7 +83,7 @@ int main() {
     count += 1;
     clearScreen();
     printScreen(g);
-    cout << "Count: " << count << endl;
+    // cout << "Count: " << count << endl;
 
     // Dummy alien.
     /*

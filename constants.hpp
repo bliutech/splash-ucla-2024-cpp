@@ -14,4 +14,6 @@
 #define COLOR_RED "\e[0;31m"
 #define COLOR_WHITE "\e[0m"
 
+#define MAX_LIVES 5
+
 #endif

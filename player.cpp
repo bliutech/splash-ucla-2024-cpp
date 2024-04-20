@@ -1,7 +1,5 @@
 #include "player.hpp"
 
-#include <iostream>
-
 #include "bullet.hpp"
 #include "constants.hpp"
 
@@ -14,7 +12,6 @@ Player::Player(int x, int y, list<Actor*>& master)
 
 void Player::tick(Inputs inputs) {
   if (inputs.hasInput) {
-    cout << inputs.input << endl;
     switch (inputs.input) {
       case 'A':  // Up key
       case 'w':
