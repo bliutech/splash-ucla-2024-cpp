@@ -20,4 +20,9 @@ Game::Game(const Game &g) {
   }
 };
 
-Game::~Game() { cout << "Game over!" << endl; };
+Game::~Game() {
+  cout << endl;
+  cout << "Game over!" << endl;
+  cout << "Final score: " << get_score() << endl;
+  cout << "Thanks for playing!" << endl;
+};

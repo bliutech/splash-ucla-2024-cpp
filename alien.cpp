@@ -10,7 +10,7 @@ Alien::Alien(int x, int y, AlienSpawner& spawner)
 void Alien::tick(Inputs input) {
   counter++;
 
-  if (counter % 10 == 0) {
+  if (counter % 1 == 0) {
     set_pos_y(get_pos_y() + 1);
     if (get_pos_y() >= BOARD_HEIGHT) {
       spawnerRef.alien_killed();

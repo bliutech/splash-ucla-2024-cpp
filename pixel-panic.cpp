@@ -143,9 +143,22 @@ int main() {
       ++iter;
     }
 
+    if (g.get_lives() <= 0) {
+      // Game over!
+      break;
+    }
+
     usleep(10000);
   }
 
   tcsetattr(fileno(stdin), TCSANOW, &oldSettings);
+
+  clearScreen();
+
+  // Cleanup
+  for (auto iter = actors.begin(); iter != actors.end();) {
+    delete (*iter);
+    iter = actors.erase(iter);
+  }
   return 0;
 }

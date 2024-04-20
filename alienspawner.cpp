@@ -6,7 +6,7 @@
 static int previous = 0;
 
 static int lcg() {
-  int next = previous * 1103515245 + 12345;
+  int next = abs(previous * 1103515245 + 12345);
   previous = next;
   return next;
 }
