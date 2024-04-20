@@ -2,7 +2,7 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/bliutech/splash-ucla-2024-cpp?quickstart=1)
 
-Class resources for "Game Programming in C++" class taught to high school students at Splash @ UCLA 2024. This repository mostly contains code for an eductional game called "Pixel Panic" written in C++ by Benson Liu & Ming Zhu. It contains a few coding challenges for students to try and practice what they know about C++.
+Class resources for "Game Programming in C++" class taught to high school students at Splash @ UCLA 2024. This repository mostly contains code for an eductional game called "Pixel Panic" written in C++ by Benson Liu & Ming Zhu. It contains a few coding challenges for students to try and practice what they know about C++. To learn more about the class, check out the [slides](https://docs.google.com/presentation/d/1h2ZUdXyQxhcOHxC9gGeyEFfhUmRaC1kvG14yEtsadcM/edit?usp=sharing).
 
 <p align="center">
     <img src=".github/pixel-panic.gif" alt="Pixel panic in action!" width="40%"/>
