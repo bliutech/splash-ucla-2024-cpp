@@ -10,7 +10,7 @@ void AlienSpawner::tick(Inputs inputs) {
   counter++;
 
   if (counter % 50 == 0) {
-    spawn_alien(counter % BOARD_WIDTH, 15);
+    spawn_alien(counter % BOARD_WIDTH, 0);
   }
 }
 

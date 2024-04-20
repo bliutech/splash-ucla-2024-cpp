@@ -8,13 +8,7 @@
 
 using namespace std;
 
-/*
- * printScreen implementation
- *
- * Prints the game board;
- *
- * TODO: Pass in a Game object as a parameter and print out the board.
- */
+// Prints the game board;
 void printScreen(Game& g) {
   string edge = "\e[0;32m";
   for (int i = 0; i < BOARD_WIDTH + 2; ++i) {
@@ -48,8 +42,8 @@ void printScreen(Game& g) {
 }
 
 /*
- * clearScreen implementation
- *
+ * Clears the terminal screen.
+ * 
  * Credit given to David Smallberg (UCLA) for this code.
  */
 void clearScreen() {
