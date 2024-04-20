@@ -1,2 +1,1 @@
-- Add game ending with player dies
 - NICE: adding ASCII art

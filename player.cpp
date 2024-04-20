@@ -64,3 +64,5 @@ void Player::shoot() {
 }
 
 string Player::get_actor_symbol() const { return COLOR_RED "P" COLOR_WHITE; }
+
+void Player::collision(Actor* other) {}

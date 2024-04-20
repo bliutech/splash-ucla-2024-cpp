@@ -138,8 +138,6 @@ int main() {
         }
       }
 
-      // cout << x << ", " << y << endl;
-
       ++iter;
     }
 
