@@ -17,6 +17,8 @@ class AlienSpawner : public Actor {
 
   void alien_killed();
 
+  void collision(Actor* other) override;
+
  private:
   // vector<Alien*> aliens;
   int numAlive = 0;

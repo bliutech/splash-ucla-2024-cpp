@@ -16,7 +16,7 @@ format:
 	clang-format -i -style=Google *.cpp *.hpp
 
 valgrind: $(TARGET)
-	valgrind --leak-check=full ./$(TARGET) > /dev/null
+	valgrind --leak-check=full ./$(TARGET)
 
 clean:
 	rm -f $(TARGET)

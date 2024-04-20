@@ -2,6 +2,7 @@
 
 #include "bullet.hpp"
 #include "constants.hpp"
+
 using namespace std;
 
 Player::Player(const Player& p) : Actor::Actor(p), masterRef(p.masterRef) {}
@@ -12,15 +13,19 @@ Player::Player(int x, int y, list<Actor*>& master)
 void Player::tick(Inputs inputs) {
   if (inputs.hasInput) {
     switch (inputs.input) {
-      case 'W':  // Up key
+      case 'A':  // Up key
       case 'w':
         if (pos_y <= 0) {
           pos_y = 0;
           break;
         }
+        if (pos_y <= BOARD_HEIGHT - 8) {
+          pos_y = BOARD_HEIGHT - 8;
+          break;
+        }
         pos_y--;
         break;
-      case 'A':  // Left key
+      case 'D':  // Left key
       case 'a':
         if (pos_x <= 0) {
           pos_x = 0;
@@ -28,8 +33,7 @@ void Player::tick(Inputs inputs) {
         }
         pos_x--;
         break;
-      // Right key
-      case 'D':
+      case 'C':  // Right key
       case 'd':
         if (pos_x >= BOARD_WIDTH - 1) {
           pos_x = BOARD_WIDTH - 1;
@@ -37,7 +41,7 @@ void Player::tick(Inputs inputs) {
         }
         pos_x++;
         break;
-      case 'S':
+      case 'B':
       case 's':  // Down key
         if (pos_y >= BOARD_HEIGHT - 1) {
           pos_y = BOARD_HEIGHT - 1;
@@ -60,3 +64,5 @@ void Player::shoot() {
 }
 
 string Player::get_actor_symbol() const { return COLOR_RED "P" COLOR_WHITE; }
+
+void Player::collision(Actor* other) {}

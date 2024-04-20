@@ -3,6 +3,14 @@
 
 #include "alien.hpp"
 
+static int previous = 0;
+
+static int lcg() {
+  int next = abs(previous * 1103515245 + 12345);
+  previous = next;
+  return next;
+}
+
 AlienSpawner::AlienSpawner(list<Actor*>& actorQueue)
     : masterQueue(actorQueue) {}
 
@@ -10,7 +18,7 @@ void AlienSpawner::tick(Inputs inputs) {
   counter++;
 
   if (counter % 50 == 0) {
-    spawn_alien(counter % BOARD_WIDTH, 0);
+    spawn_alien(lcg() % BOARD_WIDTH, 0);
   }
 }
 
@@ -26,3 +34,6 @@ void AlienSpawner::alien_killed() {
   numAlive--;
   numKilled++;
 }
+
+// Override this to allow the spawner to always generate aliens
+void AlienSpawner::collision(Actor* other) {}
