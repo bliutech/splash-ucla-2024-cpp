@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 #include <iostream>
+#include <string>
 
 #include "constants.hpp"
 
@@ -36,6 +37,7 @@ void printScreen(Game& g) {
           "                  |\e[0m"
        << endl;
   cout << base_line << endl;
+  string board_string = "";
   for (int i = 0; i < BOARD_HEIGHT; ++i) {
     string line = "";
     for (int j = 0; j < BOARD_WIDTH; ++j) {
@@ -46,8 +48,9 @@ void printScreen(Game& g) {
         line += GRAPHICS_NEUTRAL;
       }
     }
-    cout << "\e[0;32m|\e[0m" << line << "\e[0;32m|\e[0m" << endl;
+    board_string += "\e[0;32m|\e[0m" + line + "\e[0;32m|\e[0m\n";
   }
+  cout << board_string;
   cout << base_line << endl;
   cout << "\e[0;32m|                              BASE                         "
           "     |\e[0m"

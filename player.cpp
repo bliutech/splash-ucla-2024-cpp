@@ -19,6 +19,10 @@ void Player::tick(Inputs inputs) {
           pos_y = 0;
           break;
         }
+        if (pos_y <= BOARD_HEIGHT - 8) {
+          pos_y = BOARD_HEIGHT - 8;
+          break;
+        }
         pos_y--;
         break;
       case 'D':  // Left key
@@ -29,8 +33,7 @@ void Player::tick(Inputs inputs) {
         }
         pos_x--;
         break;
-      // Right key
-      case 'C':
+      case 'C':  // Right key
       case 'd':
         if (pos_x >= BOARD_WIDTH - 1) {
           pos_x = BOARD_WIDTH - 1;
