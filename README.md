@@ -1,4 +1,9 @@
-# splash-ucla-2024-cpp
+# Splash at UCLA 2024: Game Programming in C++
+<p align="center">
+    <img src=".github/pixel-panic.gif" alt="Pixel panic in action!" width="50%"/>
+</p>
+
+
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/bliutech/splash-ucla-2024-cpp?quickstart=1)
 
 Class resources for "Game Programming in C++" class taught to high school students at Splash @ UCLA 2024.
