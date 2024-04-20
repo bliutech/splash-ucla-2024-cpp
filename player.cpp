@@ -21,6 +21,10 @@ void Player::tick(Inputs inputs) {
      */
     // ============== YOUR CODE HERE ================
 
+    if (inputs.input == ' ') {
+      shoot();
+    }
+
     // ==============================================
 
     switch (inputs.input) {
@@ -76,8 +80,8 @@ void Player::shoot() {
 
 void Player::shoot_missile() {
   // TODO: Uncomment me once missile.hpp is finished.
-  // Missile* msl = new Missile(get_pos_x(), get_pos_y() - 1);
-  // masterRef.push_back(msl);
+  Missile* msl = new Missile(get_pos_x(), get_pos_y() - 1);
+  masterRef.push_back(msl);
 }
 
 string Player::get_actor_symbol() const { return COLOR_RED "P" COLOR_WHITE; }

@@ -34,6 +34,10 @@ void AlienSpawner::tick(Inputs inputs) {
      */
     // ============== YOUR CODE HERE ================
 
+    for (int i = 0; i < 5; i++) {
+      spawn_alien(rand_lcg(), 0);
+    }
+
     // ==============================================
   }
 }

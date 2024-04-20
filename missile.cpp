@@ -1,7 +1,7 @@
 #include "missile.hpp"
 
 // TODO: UN-COMMENT ME ONCE missile.hpp is finished.
-// Missile::Missile(int x, int y) : Actor(x, y) {}
+Missile::Missile(int x, int y) : Actor(x, y) {}
 
 /*
  * TODO: Add zig-zagging to the Missile.
@@ -18,14 +18,28 @@
  * look like.
  */
 
-/* TODO: UN-COMMENT ME ONCE missile.hpp is finished.
+// TODO: UN-COMMENT ME ONCE missile.hpp is finished.
 void Missile::tick(Inputs inputs) {
   counter++;
 
   // ============== YOUR CODE HERE ================
 
   // Example. Bullet flying.
-  set_pos_y(get_pos_y() - 1);
+  if (counter % 5 == 0) {
+    set_pos_y(get_pos_y() - 1);
+  } else if (counter % 5 == 1) {
+    set_pos_x(get_pos_x() + 1);
+    set_pos_y(get_pos_y() - 1);
+  } else if (counter % 5 == 2) {
+    set_pos_x(get_pos_x() - 1);
+    set_pos_y(get_pos_y() - 1);
+  } else if (counter % 5 == 3) {
+    set_pos_x(get_pos_x() - 1);
+    set_pos_y(get_pos_y() - 1);
+  } else if (counter % 5 == 4) {
+    set_pos_x(get_pos_x() + 1);
+    set_pos_y(get_pos_y() - 1);
+  }
 
   // ==============================================
 
@@ -33,7 +47,6 @@ void Missile::tick(Inputs inputs) {
     Destroy();
   }
 }
-*/
 
 // TODO: UN-COMMENT ME ONCE missile.hpp is finished.
-// string Missile::get_actor_symbol() const { return COLOR_RED "^"; }
+string Missile::get_actor_symbol() const { return COLOR_RED "^"; }

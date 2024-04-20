@@ -31,6 +31,18 @@ void Alien::tick(Inputs input) {
   // Example. Alien falling down directly.
   if (counter % 5 == 0) {
     set_pos_y(get_pos_y() + 1);
+  } else if (counter % 5 == 1) {
+    set_pos_x(get_pos_x() + 1);
+    set_pos_y(get_pos_y() + 1);
+  } else if (counter % 5 == 2) {
+    set_pos_x(get_pos_x() - 1);
+    set_pos_y(get_pos_y() + 1);
+  } else if (counter % 5 == 3) {
+    set_pos_x(get_pos_x() - 1);
+    set_pos_y(get_pos_y() + 1);
+  } else if (counter % 5 == 4) {
+    set_pos_x(get_pos_x() + 1);
+    set_pos_y(get_pos_y() + 1);
   }
 
   // ==============================================
