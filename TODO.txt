@@ -1,3 +1,2 @@
 - Add game ending with player dies
-- fix glitch where if the alien + bullet are moving at the same time, they can pass each other (should collide and alien should die). Change so that 
 - NICE: adding ASCII art
