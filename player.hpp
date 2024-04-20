@@ -16,6 +16,7 @@ class Player : public Actor {
   void tick(Inputs inputs);
 
   void shoot();
+  void shoot_missile();
 
   string get_actor_symbol() const override;
   void collision(Actor* other) override;

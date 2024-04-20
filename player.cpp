@@ -2,6 +2,7 @@
 
 #include "bullet.hpp"
 #include "constants.hpp"
+#include "missile.hpp"
 
 using namespace std;
 
@@ -12,6 +13,16 @@ Player::Player(int x, int y, list<Actor*>& master)
 
 void Player::tick(Inputs inputs) {
   if (inputs.hasInput) {
+    /*
+     * TODO: Add handling for shooting the laser.
+     *
+     * If the keyboard input is a space character (i.e. " "),
+     * then you can call the shoot() function.
+     */
+    // ============== YOUR CODE HERE ================
+
+    // ==============================================
+
     switch (inputs.input) {
       case 'A':  // Up key
       case 'w':
@@ -49,8 +60,8 @@ void Player::tick(Inputs inputs) {
         }
         pos_y++;
         break;
-      case ' ':  // Space key
-        shoot();
+      case 'f':
+        shoot_missile();
         break;
       default:
         break;
@@ -61,6 +72,12 @@ void Player::tick(Inputs inputs) {
 void Player::shoot() {
   Bullet* blt = new Bullet(get_pos_x(), get_pos_y() - 1);
   masterRef.push_back(blt);
+}
+
+void Player::shoot_missile() {
+  // TODO: Uncomment me once missile.hpp is finished.
+  // Missile* msl = new Missile(get_pos_x(), get_pos_y() - 1);
+  // masterRef.push_back(msl);
 }
 
 string Player::get_actor_symbol() const { return COLOR_RED "P" COLOR_WHITE; }
