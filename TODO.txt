@@ -1,7 +1,3 @@
-- Add scoring + lives
 - Add game ending with player dies
-- adjust alien spawning
-- add player movement confinement
 - fix glitch where if the alien + bullet are moving at the same time, they can pass each other (should collide and alien should die). Change so that 
-- alien spawner has a position on the board. Override the collision function so that it doesn't get yeeted and aliens stop spawning.
 - NICE: adding ASCII art
